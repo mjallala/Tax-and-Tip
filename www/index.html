@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi-page template</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.css" />
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/indexform.js"></script>
+    <script src="js/index.js"></script>
+<script language="JavaScript" type="text/javascript">
+<!-- //hide this JavaScript from browsers that don't process JavaScript
+
+// Calculate sales tax 
+function calctax(amt, taxrate)
+{ // determine sales tax
+var tax = amt * taxrate;
+return tax;
+}
+function total_purchase(a,b)
+{ return parseFloat(a) + parseFloat(b);
+}
+function tipx(a,b)
+    {
+        var tip = a * b/100;
+        return tip;
+    }
+function total_tip(c,d)
+{ return parseFloat(c) + parseFloat(d);
+}
+
+// end of hiding  -->
+</script>
+    
+</head>
+
+
+<body>
+
+    <!-- Start of first page: #one -->
+    <div data-role="page" id="one">
+
+        <div data-role="header">
+            <h1>Sales Tax and Tip calculator</h1>
+        </div>
+        <!-- /header -->
+
+        <div data-role="content">
+            
+            <form id="purchase">
+                <label>
+                   
+                <input id="amount" type="number" required="required"  name="amount" placeholder=" ($) Total Amount Before Tax:" pmbx_context="88E40A76-71C2-49D5-853D-C15DE76C8977">
+
+                 <input id="amounttip" type="number" required="required"  name="amounttip" placeholder=" ($) Tsx percentage:" pmbx_context="88E40A76-71C2-49D5-853D-C15DE76C8977">
+                <p>
+            <button name="calculate" onclick="SalesTax.value = calctax(amount.value, 0.13); 
+			total.value = total_purchase(amount.value,SalesTax.value); tip.value = tipx(amount.value, amounttip.value); totaltip.value = total_tip(total.value,tip.value); " type="submit" value="Calculate Tax" pmbx_context="33B49380-4881-45E0-B900-58939AF427AD" data-role="button">Calculate</button>
+         </p>
+       
+               
+                 <p>
+             <input name="SalesTax" type="hidden" id="SalesTax" size="10" pmbx_context="5F5B5B83-0E1D-4754-B7F6-BAA2E8E31670" disabled="disabled">
+         </p>
+         <p>
+            <input name="total" type="hidden" id="total"  size="10" pmbx_context="278726BE-D2B7-43CA-8450-380A3791881D" disabled="disabled">
+         </p><p>
+             <input name="tip" id="tip" size="10" type="hidden"  disabled="disabled">
+         </p>
+         <p>
+            <input name="totaltip"  id="totaltip" type="hidden"  size="10"  disabled="disabled">
+         </p>
+            </form>
+        </div>
+    </div>
+    <!-- /page one -->
+
+
+    <!-- Start of second page: #two -->
+    <div data-role="page" id="two" data-theme="a">
+
+        <div data-role="header">
+            <h1>amount details</h1>
+        </div>
+        
+        <!-- /header -->
+        <div data-role="content">
+            <p>Ammount before tax and tip <span id="confirmamount"></span></p>
+             <p>Sales Tax <span id="confirmamount2"></span></p>
+            <p> Total price before tip <span id="confirmamount3"></span></p>
+             <p> tip percentage <span id="confirmamount4"></span></p>
+              <p>===================================================</p>
+            <p> total amout with tip $<span id="confirmamount5"></span></p>
+          
+            <p><a href="#one" data-role="button">Show page "one"</a>
+            </p>
+        </div>
+
+
+    </div>
+    <!-- /page two -->
+
+</body>
+
+</html>
